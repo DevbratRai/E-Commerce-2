@@ -6,7 +6,7 @@ const Product = ({ product }) => {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart(product);
+    addToCart({ ...product, quantity: 1 });
   };
 
   return (
