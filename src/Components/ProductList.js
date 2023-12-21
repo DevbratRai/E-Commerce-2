@@ -1,27 +1,51 @@
 import React from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-const ProductList = ({ products }) => {
+import { Container, Row, Col } from "react-bootstrap";
+import Product from "./Product";
+
+const productsArr = [
+  {
+    title: "Colors",
+
+    price: 100,
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+  },
+
+  {
+    title: "Black and white Colors",
+
+    price: 50,
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+  },
+
+  {
+    title: "Yellow and Black Colors",
+
+    price: 70,
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+  },
+
+  {
+    title: "Blue Color",
+
+    price: 100,
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+  },
+];
+const ProductList = () => {
   return (
-    <Card>
-      <Container className="mt-4">
-        <Row>
-          {products.map((product, index) => (
-            <Col key={index} md={3} sm={6} xs={12} className="mb-4 mr-4">
-              <div>
-                <Card.Title className="text-center">{product.title}</Card.Title>
-                <Card className="m-3">
-                  <Card.Img variant="top" src={product.imageUrl} />
-                </Card>
-                <Card.Body className="d-flex">
-                  <Card.Text className="mr-5">${product.price}</Card.Text>
-                  <Button>Add to Cart</Button>
-                </Card.Body>
-              </div>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </Card>
+    <Container>
+      <Row>
+        {productsArr.map((product, index) => (
+          <Col key={index} md={4} className="mb-4">
+            <Product product={product} />
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 };
 

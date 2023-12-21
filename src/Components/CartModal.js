@@ -2,10 +2,11 @@ import React from "react";
 import { Modal, Container, Row, Col, Card, Button } from "react-bootstrap";
 import { useCart } from "../Context/CartContext";
 
-const Cart = ({ show, onHide }) => {
+const CartModal = ({ show, onHide }) => {
   const { cart } = useCart();
+
   return (
-    <Modal show={show} onHide={onHide}>
+    <Modal show={show} onHide={onHide} centered>
       <Modal.Header closeButton>
         <Modal.Title>Shopping Cart</Modal.Title>
       </Modal.Header>
@@ -30,4 +31,4 @@ const Cart = ({ show, onHide }) => {
   );
 };
 
-export default Cart;
+export default CartModal;

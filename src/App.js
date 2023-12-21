@@ -2,8 +2,10 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import { useState } from "react";
 import "./App.css";
 import Cart from "./Components/Cart";
+import NavBar from "./Components/NavBar";
 
 import ProductList from "./Components/ProductList";
+import { CartProvider } from "./Context/CartContext";
 
 const cartElements = [
   {
@@ -66,27 +68,12 @@ function App() {
     setShowCart(!showCart);
   };
   return (
-    <>
-      <Navbar bg="dark" expand="lg" variant="dark">
-        <Container>
-          <Navbar.Brand href="#">E-commerce Website</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />s
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto d-flex ml-5 justify-content-center">
-              <Nav.Link href="#">Home</Nav.Link>
-              <Nav.Link href="#">About</Nav.Link>
-              <Nav.Link href="#">Store</Nav.Link>
-            </Nav>
-            <Nav className="mr-2">
-              <Nav.Link onClick={handleCartToggle}>Cart</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-      {showCart && <Cart cartItems={cartElements} onHide={handleCartToggle} />}
+    <CartProvider>
+      <NavBar onClick={handleCartToggle} />
+      {showCart && <Cart show={showCart} onHide={handleCartToggle} />}
 
-      <ProductList products={productsArr} />
-    </>
+      <ProductList />
+    </CartProvider>
   );
 }
 
