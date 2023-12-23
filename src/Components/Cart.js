@@ -6,8 +6,9 @@ const Cart = ({ show, onHide }) => {
   const { cart } = useCart();
   return (
     <Modal show={show} onHide={onHide}>
-      <Modal.Header closeButton>
-        <Modal.Title>Shopping Cart</Modal.Title>
+      <Modal.Header>
+        <Modal.Title> Cart</Modal.Title>
+        <Button onClick={onHide}>❌</Button>
       </Modal.Header>
       <Modal.Body>
         <Container>

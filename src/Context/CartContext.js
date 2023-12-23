@@ -23,10 +23,8 @@ const cartReducer = (state, action) => {
         return { ...state, cartItems: updatedCartItems };
       } else {
         // Item doesn't exist in the cart, add it
-        console.log({
-          ...state,
-          cartItems: [...state.cartItems, action.payload],
-        });
+        console.log(action.payload);
+
         return { ...state, cartItems: [...state.cartItems, action.payload] };
       }
 
