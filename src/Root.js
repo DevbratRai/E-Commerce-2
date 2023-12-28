@@ -11,9 +11,25 @@ const Root = () => {
   const handleCartToggle = () => {
     setShowCart(!showCart);
   };
+
+  const addDataHandler = async (data) => {
+    const response = await fetch(
+      "https://e-commerce-2-1227f-default-rtdb.firebaseio.com/data.json",
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const resData = await response.json();
+    console.log(resData);
+  };
+
   return (
     <>
-      <NavBar onClick={handleCartToggle} />
+      <NavBar onClick={handleCartToggle} onAddData={addDataHandler} />
       {showCart && <Cart show={showCart} onHide={handleCartToggle} />}
       <main>
         <Outlet />

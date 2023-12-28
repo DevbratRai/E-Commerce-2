@@ -6,6 +6,7 @@ import { RouterProvider } from "react-router-dom";
 import Root from "./Root";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import ContactUs from "./pages/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/store",
         element: <ProductList />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs onAddData={onAddData} />,
       },
     ],
   },

@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
 
-const NavBar = ({ onClick }) => {
+const NavBar = ({ onClick, onAddData }) => {
   const { cart } = useCart();
   const [showCartIcon, setShowCartIcon] = useState(false);
   const [showHeaderButton, setShowHeaderButton] = useState(true);
@@ -81,6 +81,22 @@ const NavBar = ({ onClick }) => {
             }}
           >
             About
+          </NavLink>
+        </li>
+        <li style={{ margin: "0px 40px" }}>
+          <NavLink
+            to="/contact"
+            style={{
+              color: "white",
+              textDecoration: "none",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              setShowCartIcon(false);
+              setShowHeaderButton(false);
+            }}
+          >
+            Contact US
           </NavLink>
         </li>
         {showCartIcon && (
