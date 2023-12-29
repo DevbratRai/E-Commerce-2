@@ -7,6 +7,22 @@ import Root from "./Root";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
+import ProductDetails from "./Components/ProductDetails";
+
+const addDataHandler = async (data) => {
+  const response = await fetch(
+    "https://e-commerce-2-1227f-default-rtdb.firebaseio.com/data.json",
+    {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const resData = await response.json();
+  console.log(resData);
+};
 
 const router = createBrowserRouter([
   {
@@ -24,10 +40,16 @@ const router = createBrowserRouter([
       {
         path: "/store",
         element: <ProductList />,
+        children: [
+          {
+            path: "/store/product-detail/:productId",
+            element: <ProductDetails />,
+          },
+        ],
       },
       {
         path: "/contact",
-        element: <ContactUs onAddData={onAddData} />,
+        element: <ContactUs onAddData={addDataHandler} />,
       },
     ],
   },
