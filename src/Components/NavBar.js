@@ -85,6 +85,18 @@ const NavBar = ({ onClick, onAddData }) => {
         </li>
         <li style={{ margin: "0px 40px" }}>
           <NavLink
+            to="/login"
+            style={{
+              color: "white",
+              textDecoration: "none",
+              cursor: "pointer",
+            }}
+          >
+            Login
+          </NavLink>
+        </li>
+        <li style={{ margin: "0px 40px" }}>
+          <NavLink
             to="/contact"
             style={{
               color: "white",

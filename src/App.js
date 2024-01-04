@@ -8,6 +8,45 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
 import ProductDetails from "./Components/ProductDetails";
+import Login from "./pages/Login";
+
+const productsArr = [
+  {
+    id: "p1",
+    title: "Colors",
+
+    price: 100,
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+  },
+
+  {
+    id: "p2",
+    title: "Black and white Colors",
+
+    price: 50,
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+  },
+
+  {
+    id: "p3",
+    title: "Yellow and Black Colors",
+
+    price: 70,
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+  },
+
+  {
+    id: "p4",
+    title: "Blue Color",
+
+    price: 100,
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+  },
+];
 
 const addDataHandler = async (data) => {
   const response = await fetch(
@@ -39,17 +78,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/store",
-        element: <ProductList />,
-        children: [
-          {
-            path: "/store/product-detail/:productId",
-            element: <ProductDetails />,
-          },
-        ],
+        element: <ProductList productsArr={productsArr} />,
+      },
+      {
+        path: "/store/:productID",
+        element: <ProductDetails productsArr={productsArr} />,
       },
       {
         path: "/contact",
         element: <ContactUs onAddData={addDataHandler} />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },
