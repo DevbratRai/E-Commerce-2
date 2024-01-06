@@ -2,13 +2,13 @@ import React, { useContext, useRef } from "react";
 import { useState } from "react";
 import classes from "./Login.module.css";
 import AuthContext from "../Context/auth-context";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
+  const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
 
   const switchAuthModeHandler = () => {
@@ -59,6 +59,7 @@ const Login = () => {
       })
       .then((data) => {
         authCtx.login(data.idToken);
+        navigate("/store");
       })
       .catch((err) => {
         alert(err.message);

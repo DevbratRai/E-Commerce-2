@@ -1,7 +1,8 @@
+import { useContext } from "react";
 import ProductList from "./Components/ProductList";
 import { CartProvider } from "./Context/CartContext";
 
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import Root from "./Root";
 import About from "./pages/About";
@@ -9,6 +10,8 @@ import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
 import ProductDetails from "./Components/ProductDetails";
 import Login from "./pages/Login";
+
+import AuthContext from "./Context/auth-context";
 
 const productsArr = [
   {
@@ -63,6 +66,14 @@ const addDataHandler = async (data) => {
   console.log(resData);
 };
 
+function ProtectedRoute() {
+  const authCtx = useContext(AuthContext);
+  if (!authCtx.isLoggedIn) {
+    return <Navigate to={"/login"} />;
+  }
+  return <ProductList productsArr={productsArr} />;
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -78,7 +89,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/store",
-        element: <ProductList productsArr={productsArr} />,
+        element: <ProtectedRoute />,
       },
       {
         path: "/store/:productID",
