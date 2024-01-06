@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Product from "./Product";
-import { Link } from "react-router-dom";
 
 const ProductList = ({ productsArr }) => {
   return (
@@ -9,9 +8,7 @@ const ProductList = ({ productsArr }) => {
       <Row>
         {productsArr.map((product, index) => (
           <Col key={product.id} md={4} className="mb-4">
-            <Link to={`/store/${product.id}`}>
-              <Product product={product} />
-            </Link>
+            <Product product={product} />
           </Col>
         ))}
       </Row>

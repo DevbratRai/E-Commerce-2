@@ -4,6 +4,7 @@ const AuthContext = createContext({
   token: "",
   isLoggedIn: false,
   login: (token) => {},
+  email: "",
 });
 
 export const AuthContextProvider = (props) => {
@@ -13,10 +14,12 @@ export const AuthContextProvider = (props) => {
     setToken(token);
     localStorage.setItem("token", token);
   };
+
   const contextValue = {
     token: token,
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
+    email: AuthContext.email,
   };
 
   return (

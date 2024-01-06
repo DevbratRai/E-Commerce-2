@@ -59,6 +59,7 @@ const Login = () => {
       })
       .then((data) => {
         authCtx.login(data.idToken);
+        authCtx.email = data.email;
         navigate("/store");
       })
       .catch((err) => {
